@@ -1,5 +1,10 @@
 # Multi-Server Node Deployment, Reverse Proxy & Automation
 
+# Note: I do not currently have a Hetzner account, so I have not had the opportunity to perform a hands-on deployment on that platform. However, I am familiar with the general process, including provisioning a Hetzner # Cloud server, configuring SSH access and firewall rules, deploying applications, and setting up backups.
+
+# For this project, I selected AWS as I already have access to the platform and wanted to demonstrate a multi-region architecture using AWS services. I also took cost efficiency into consideration and therefore 
+# implemented a lightweight AWS setup using only the services required to meet the project objectives.
+
 ## Architecture
 
 This project demonstrates a multi-region AWS infrastructure.
@@ -7,15 +12,8 @@ This project demonstrates a multi-region AWS infrastructure.
 ### Primary Server
 
 AWS EC2 - Frankfurt
-
 Region:
-
 eu-central-1
-
-Public IP:
-
-18.192.112.9
-
 Responsibilities:
 
 - Node.js application
@@ -29,17 +27,10 @@ Responsibilities:
 ### Backup Server
 
 AWS EC2 - Mumbai
-
 Region:
-
 ap-south-1
 
-Public IP:
-
-3.7.122.22
-
 Responsibilities:
-
 - Receive application backups
 - Store compressed backup files
 
@@ -85,11 +76,8 @@ Port 3000 is not publicly exposed.
 ## Docker
 
 The application uses a multi-stage Dockerfile.
-
 The application container listens on port 3000.
-
 Nginx acts as the reverse proxy.
-
 Only ports 22, 80 and 443 are publicly accessible.
 
 ---
@@ -115,21 +103,16 @@ Pipeline:
 ### Firewall
 
 The primary server allows:
-
 - SSH - 22
 - HTTP - 80
 - HTTPS - 443
-
 The application port 3000 is not exposed publicly.
 
 ### SSH
 
 A dedicated devops user is used.
-
 Password authentication is disabled.
-
 Root SSH login is disabled.
-
 SSH keys are used for authentication.
 
 ---
@@ -149,9 +132,7 @@ The backup script:
 ## Cron
 
 The backup script runs automatically once per day.
-
 Example:
-
 0 2 * * * /opt/multi-server-devops/backup.sh >> /var/log/backup.log 2>&1
 
 ---
@@ -159,9 +140,7 @@ Example:
 ## Domain
 
 Domain:
-
-ajaydevopsassignment.org
-
+ajaydevopsassignment.duckdns.org/
 The domain points to the Europe primary server.
 
 ---
@@ -169,21 +148,15 @@ The domain points to the Europe primary server.
 ## HTTPS
 
 Let's Encrypt is used to provide a trusted SSL certificate.
-
 The application is accessible through:
-
-https://ajaydevopsassignment.org
+https://ajaydevopsassignment.duckdns.org/
 
 ---
 
 ## Deployment
 
 The application is automatically deployed when changes are pushed to main.
-
 Example:
-
 git add .
-
 git commit -m "Deploy application"
-
 git push origin main
