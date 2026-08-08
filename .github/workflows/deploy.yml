@@ -1,4 +1,4 @@
-name: Deploy Application
+name: Deploy Multi-Server Application
 
 on:
   push:
@@ -6,34 +6,37 @@ on:
       - main
 
 jobs:
-
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout source code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: |
-          docker build -t multi-server-devops .
-
-      - name: Deploy to Europe server
-        uses: appleboy/ssh-action@v1.2.0
+      - name: Deploy to Europe Server
+        uses: appleboy/ssh-action@v1.2.2
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            set -e
 
             cd /opt/multi-server-devops
 
+            echo "Pulling latest code..."
             git pull origin main
 
-            chmod +x backup.sh
+            echo "Building Docker images..."
+            docker compose build
 
-            docker compose up -d --build
+            echo "Starting application..."
+            docker compose up -d
 
+            echo "Removing unused Docker images..."
             docker image prune -f
+
+            echo "Deployment completed successfully."
+
+            docker compose ps
