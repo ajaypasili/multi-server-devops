@@ -75,8 +75,11 @@ Port 3000 is not publicly exposed.
 ## Docker
 
 The application uses a multi-stage Dockerfile.
+
 The application container listens on port 3000.
+
 Nginx acts as the reverse proxy.
+
 Only ports 22, 80 and 443 are publicly accessible.
 
 ---
@@ -140,6 +143,7 @@ Example:
 
 Domain:
 ajaydevopsassignment.duckdns.org/
+
 The domain points to the Europe primary server.
 
 ---
@@ -147,7 +151,9 @@ The domain points to the Europe primary server.
 ## HTTPS
 
 Let's Encrypt is used to provide a trusted SSL certificate.
+
 The application is accessible through:
+
 https://ajaydevopsassignment.duckdns.org/
 
 ---
@@ -156,6 +162,9 @@ https://ajaydevopsassignment.duckdns.org/
 
 The application is automatically deployed when changes are pushed to main.
 Example:
+
 git add .
+
 git commit -m "Deploy application"
+
 git push origin main
