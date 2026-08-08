@@ -1,0 +1,9 @@
+{
+  "name": "multi-server-devops",
+  "version": "1.0.0",
+  "description": "Multi-server Node.js DevOps interview assignment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
