@@ -2,8 +2,7 @@
 
 # Note: I do not currently have a Hetzner account, so I have not had the opportunity to perform a hands-on deployment on that platform. However, I am familiar with the general process, including provisioning a Hetzner # Cloud server, configuring SSH access and firewall rules, deploying applications, and setting up backups.
 
-# For this project, I selected AWS as I already have access to the platform and wanted to demonstrate a multi-region architecture using AWS services. I also took cost efficiency into consideration and therefore 
-# implemented a lightweight AWS setup using only the services required to meet the project objectives.
+# For this project, I selected AWS as I already have access to the platform and wanted to demonstrate a multi-region architecture using AWS services. I also took cost efficiency into consideration and therefore implemented a lightweight AWS setup using only the services required to meet the project objectives.
 
 ## Architecture
 
