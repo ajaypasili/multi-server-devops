@@ -1,0 +1,4 @@
+certbot/conf/
+*.pem
+nginx.conf-bkp
+nginx/*.save
