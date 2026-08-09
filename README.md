@@ -4,6 +4,11 @@
 
 # For this project, I selected AWS as I already have access to the platform and wanted to demonstrate a multi-region architecture using AWS services. I also took cost efficiency into consideration and therefore implemented a lightweight AWS setup using only the services required to meet the project objectives.
 
+Starting line of task :"Multi-region infrastructure (Primary: Indian Node, Secondary: Europe Node)"
+but later it says:
+"sync that backup file from Server A (Hetzner) to Server B (India backup node)."
+So, I choose Europe as main server , India as backup server.
+
 ## Architecture
 
 This project demonstrates a multi-region AWS infrastructure.
