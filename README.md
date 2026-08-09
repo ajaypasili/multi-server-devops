@@ -135,7 +135,7 @@ The backup script:
 
 The backup script runs automatically once per day.
 Example:
-0 2 * * * /opt/multi-server-devops/backup.sh >> /var/log/backup.log 2>&1
+0 1 * * * /opt/multi-server-devops/backup.sh >> /var/log/backup.log 2>&1
 
 ---
 
