@@ -150,7 +150,7 @@ Let's Encrypt is used to provide a trusted SSL certificate.
 
 The application is accessible through:
 
-https://ajaydevopsassignment.duckdns.org/
+https://ajaydevopsassignment.duckdns.
 
 ---
 
